@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Falcon Services | Premium Laboratory Analyzers & Field Service</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo Layout with Image & Fallback text -->
+                <div class="flex-shrink-0 flex items-center">
+                    <img src="assets/falcon-logo.png" alt="Falcon Services Logo" class="h-14 w-auto mr-3 rounded-md shadow-sm object-contain">
+                    <div id="logo-text-fallback" class="block">
+                        <span class="text-2xl font-black text-blue-900 tracking-wider">FALCON <span class="text-blue-500">SERVICES</span></span>
+                    </div>
+                </div>
+                <!-- Navigation Menu -->
+                <div class="hidden md:flex space-x-8 font-medium">
+                    <a href="#offerings" class="text-gray-600 hover:text-blue-900 transition">Buy Analyzers</a>
+                    <a href="#offerings" class="text-gray-600 hover:text-blue-900 transition">Technical Services</a>
+                    <a href="#platforms" class="text-gray-600 hover:text-blue-900 transition">Supported Brands</a>
+                    <a href="#contact" class="text-gray-600 hover:text-blue-900 transition">Contact Us</a>
+                </div>
+                <div>
+                    <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-lg font-semibold transition shadow-md text-sm">
+                        Get a Quote / Request Service
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-blue-900 via-indigo-950 to-slate-900 text-white py-20 lg:py-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-[1.1fr_1fr] gap-12 items-center">
+            <div class="space-y-6">
+                <span class="bg-blue-500/20 text-blue-300 text-xs uppercase font-bold tracking-widest px-3 py-1.5 rounded-full border border-blue-500/30">Equipment &amp; Support </span>
+                <h1 class="text-4xl lg:text-5xl font-extrabold mt-4 tracking-tight leading-tight">
+                    Premium Laboratory Analyzers &amp; Elite Field Service
+                </h1>
+                <p class="mt-4 text-lg lg:text-xl text-gray-200 leading-relaxed max-w-prose">
+                    Acquire industry-leading analyzers and expert field service to minimize downtime and maximize throughput.
+                </p>
+                
+                <!-- Required Copy Integration -->
+                <div class="mt-6 bg-blue-950/60 border-l-4 border-blue-500 p-4 rounded-r shadow-sm">
+                    <p class="text-blue-300 font-semibold italic text-sm md:text-base leading-relaxed">
+                        "Working alongside International Diagnostic Equipment to deliver top-tier equipment acquisition and field support."
+                    </p>
+                </div>
+
+                <div class="mt-8 flex flex-col sm:flex-row gap-4">
+                    <a href="#offerings" class="bg-blue-500 hover:bg-blue-600 text-center text-white font-bold px-8 py-4 rounded-xl shadow-lg transition duration-200">
+                        Browse Analyzers for Sale
+                    </a>
+                    <a href="#contact" class="bg-transparent border border-gray-400 hover:border-white text-center text-gray-300 hover:text-white font-bold px-8 py-4 rounded-xl transition duration-200">
+                        Schedule Equipment Service
+                    </a>
+                </div>
+            </div>
+            <div class="relative hidden md:flex justify-center items-center h-full">
+                <!-- Hero image carousel -->
+                <div id="heroCarousel" class="w-full max-w-2xl lg:max-w-[48rem] bg-white rounded-3xl shadow-2xl p-6 relative overflow-hidden">
+                    <div class="relative aspect-[4/3] md:aspect-[16/9] overflow-hidden bg-slate-100 rounded-3xl">
+                        <div class="carousel-track flex transition-transform duration-500 h-full">
+                            <img src="assets/slide1.jpg" alt="Slide 1" class="w-full h-full object-contain rounded-3xl flex-shrink-0 bg-slate-100">
+                            <img src="assets/slide2.jpg" alt="Slide 2" class="w-full h-full object-contain rounded-3xl flex-shrink-0 bg-slate-100">
+                            <img src="assets/slide3.jpg" alt="Slide 3" class="w-full h-full object-contain rounded-3xl flex-shrink-0 bg-slate-100">
+                        </div>
+                        <button class="carousel-prev absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg text-xl">‹</button>
+                        <button class="carousel-next absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white p-3 rounded-full shadow-lg text-xl">›</button>
+                        <div class="carousel-dots absolute bottom-4 left-1/2 -translate-x-1/2 flex"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+    /* Simple hero carousel initializer */
+    (function(){
+        const root = document.getElementById('heroCarousel');
+        if(!root) return;
+        const track = root.querySelector('.carousel-track');
+        const slides = Array.from(track.children);
+        const prev = root.querySelector('.carousel-prev');
+        const next = root.querySelector('.carousel-next');
+        const dotsNav = root.querySelector('.carousel-dots');
+        let index = 0;
+        const slideCount = slides.length;
+
+        function update(){
+            track.style.transform = `translateX(${ -index * 100 }%)`;
+            Array.from(dotsNav.children).forEach((d,i)=> d.classList.toggle('bg-blue-600', i===index));
+        }
+
+        function go(n){ index = (n + slideCount) % slideCount; update(); }
+
+        // build dots
+        slides.forEach((s,i)=>{
+            const btn = document.createElement('button');
+            btn.className = 'w-2 h-2 rounded-full bg-gray-300 mx-1';
+            btn.addEventListener('click', ()=> go(i));
+            dotsNav.appendChild(btn);
+        });
+
+        prev.addEventListener('click', ()=> go(index-1));
+        next.addEventListener('click', ()=> go(index+1));
+
+        update();
+
+        // autoplay
+        let timer = setInterval(()=> go(index+1), 4000);
+        root.addEventListener('mouseenter', ()=> clearInterval(timer));
+        root.addEventListener('mouseleave', ()=> timer = setInterval(()=> go(index+1), 4000));
+    })();
+    </script>
+
+    <!-- Trust / Relationship Banner (The Support Network) -->
+    <div class="bg-slate-100 border-y border-gray-200 py-5 text-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-cenntter items-center md:space-x-12 space-y-3 md:space-y-0">
+            <p class="text-sm md:text-base font-bold text-gray-600 tracking-wider uppercase flex items-center justify-center">
+                <i class="fa-solid fa-circle-check text-blue-600 mr-2"></i>
+                Proudly supported by International Diagnostic Equipment
+            </p>
+            <span class="hidden md:block text-gray-300 text-xl font-light">|</span>
+            <p class="text-sm md:text-base font-bold text-gray-600 tracking-wider uppercase flex items-center justify-center">
+                <i class="fa-solid fa-circle-check text-blue-600 mr-2"></i>
+                Supported by Awareness Technologies
+            </p>
+        </div>
+    </div>
+
+    <!-- Core Offerings Architecture (Four-Column Grid) -->
+    <section id="offerings" class="py-20 lg:py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto">
+                <h2 class="text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">Our Core Offerings</h2>
+                <p class="mt-4 text-lg text-gray-600">A single comprehensive resource for instrument procurement and lifelong laboratory field support.</p>
+            </div>
+
+            <div class="mt-16 grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Column 1: Sales -->
+                <div class="bg-gray-50 p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-6 text-xl">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-950 mb-2">Certified Analyzer Sales</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4"><span class="font-bold text-slate-900">Focus:</span> Sourcing new and expertly refurbished clinical analyzers for labs of all sizes.</p>
+                    </div>
+                    <p class="text-gray-600 text-sm leading-relaxed pt-3 border-t border-gray-200"><span class="font-bold text-slate-900">Value:</span> Budget-friendly, reliable hardware solutions with flexible procurement options.</p>
+                </div>
+
+                <!-- Column 2: PM -->
+                <div class="bg-gray-50 p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center mb-6 text-xl">
+                            <i class="fa-solid fa-clipboard-list"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-950 mb-2">Preventive Maintenance</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4"><span class="font-bold text-slate-900">Focus:</span> Maximize reliability with preventative maintenance protect your investment and ensure peak performance Falcon services highly trained technicians provide comprehensive maintenance that meets all manufacturers standards significantly reducing the risk of unexpected failures.</p>
+                    </div>
+                    <p class="text-gray-600 text-sm leading-relaxed pt-3 border-t border-gray-200"><span class="font-bold text-slate-900">Value:</span> Preventing unexpected hardware failures before they disrupt patient testing.</p>
+                </div>
+
+                <!-- Column 3: Repair -->
+                <div class="bg-gray-50 p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-red-100 text-red-600 rounded-lg flex items-center justify-center mb-6 text-xl">
+                            <i class="fa-solid fa-screwdriver-wrench"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-950 mb-2">Corrective Repair</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4"><span class="font-bold text-slate-900">Focus:</span> Rapid on-site emergency troubleshooting and component-level technical repair.</p>
+                    </div>
+                    <p class="text-gray-600 text-sm leading-relaxed pt-3 border-t border-gray-200"><span class="font-bold text-slate-900">Value:</span> Minimizing unexpected downtime when a critical system fails.</p>
+                </div>
+
+                <!-- Column 4: Compliance -->
+                <div class="bg-gray-50 p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-lg flex items-center justify-center mb-6 text-xl">
+                            <i class="fa-solid fa-file-shield"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-950 mb-2">Compliance &amp; Validation</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4"><span class="font-bold text-slate-900">Focus:</span> Complete deployment documentation, installation, and Operational Qualifications.</p>
+                    </div>
+                    <p class="text-gray-600 text-sm leading-relaxed pt-3 border-t border-gray-200"><span class="font-bold text-slate-900">Value:</span> Guaranteeing total adherence to strict CLIA, FDA, and CAP regulatory standards.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- System & Brand Competency Matrix & Value Props -->
+    <section id="platforms" class="py-16 bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-16 items-center">
+            
+            <!-- Supported Brand List -->
+            <div>
+                <h2 class="text-3xl font-extrabold tracking-tight uppercase">Supported Platforms</h2>
+                <p class="text-slate-400 mt-2 mb-8">Showcasing the primary equipment families that Falcon Services sells and maintains.</p>
+                
+                <div class="space-y-4 text-slate-900">
+                    <div class="bg-white p-5 rounded border-l-4 border-blue-500 shadow-sm">
+                        <h4 class="font-bold text-slate-950 text-base md:text-lg">Clinical Chemistry &amp; Immunoassay</h4>
+                        <p class="text-gray-600 text-sm mt-1">Sourcing and servicing systems like Beckman Coulter AU Series &amp; Roche Cobas series.</p>
+                    </div>
+                    <div class="bg-white p-5 rounded border-l-4 border-blue-500 shadow-sm">
+                        <h4 class="font-bold text-slate-950 text-base md:text-lg">Hematology Instruments</h4>
+                        <p class="text-gray-600 text-sm mt-1">Lifecycle diagnostics and sales setup for platforms including Abbott CELL-DYN.</p>
+                    </div>
+                    <div class="bg-white p-5 rounded border-l-4 border-blue-500 shadow-sm">
+                        <h4 class="font-bold text-slate-950 text-base md:text-lg">Benchtop Analyzers &amp; Spectrophotometers</h4>
+                        <p class="text-gray-600 text-sm mt-1">Specifically highlighting systems from <strong class="text-blue-900">Awareness Technologies</strong>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Core Value Propositions -->
+            <div>
+                <h2 class="text-3xl font-extrabold tracking-tight uppercase mb-8">The Falcon Advantage</h2>
+                
+                <ul class="space-y-8">
+                    <li class="flex items-start">
+                        <div class="flex-shrink-0 mt-1 text-blue-400 text-2xl">
+                            <i class="fa-solid fa-layer-group"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-bold text-white">The Complete Equipment Lifecycle</h4>
+                            <p class="mt-2 text-slate-400 text-sm leading-relaxed">We don't just sell you an analyzer and walk away. Falcon Services handles everything from initial procurement and IQ/OQ validation to lifetime maintenance.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <div class="flex-shrink-0 mt-1 text-blue-400 text-2xl">
+                            <i class="fa-solid fa-user-gear"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-bold text-white">Direct Engineer Access</h4>
+                            <p class="mt-2 text-slate-400 text-sm leading-relaxed">Skip automated phone trees. Speak directly to specialized field service engineers and equipment specialists.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <div class="flex-shrink-0 mt-1 text-blue-400 text-2xl">
+                            <i class="fa-solid fa-truck-fast"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-bold text-white">Streamlined Component Logistics</h4>
+                            <p class="mt-2 text-slate-400 text-sm leading-relaxed">Immediate access to high-quality replacement parts, consumables, and reagents to keep your new instrumentation running seamlessly.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Intake & Inquiry Form (The Conversion Goal) -->
+    <section id="contact" class="py-20 bg-slate-100 border-t border-gray-200">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white p-10 rounded-2xl shadow-xl border border-gray-200">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-black text-slate-900">Connect with a Falcon Specialist</h2>
+                    <p class="text-gray-600 mt-2">Fast-track your laboratory sales or service inquiries directly to our specialist desk.</p>
+                </div>
+
+                <form class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">Full Name &amp; Title</label>
+                            <input type="text" placeholder="John Doe, Lab Director" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none transition">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">Laboratory / Facility Name</label>
+                            <input type="text" placeholder="Metro Clinical Labs" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none transition">
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">Contact Email</label>
+                            <input type="email" placeholder="jdoe@facility.com" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none transition">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-2">Contact Phone</label>
+                            <input type="tel" placeholder="(555) 000-0000" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none transition">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-2">Primary Inquiry Type</label>
+                        <select class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none transition bg-white">
+                            <option>I want to purchase an analyzer</option>
+                            <option>I need urgent equipment repair</option>
+                            <option>I want a quote for a preventive maintenance contract</option>
+                            <option>Equipment Installation / Validation</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-2">Instrument Model of Interest (If applicable)</label>
+                        <input type="text" placeholder="e.g., Beckman AU480" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none transition">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-bold text-gray-700 mb-2">Message / Details</label>
+                        <textarea rows="4" placeholder="Please provide details about your request..." class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none transition"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl shadow-lg transition duration-200 uppercase tracking-wider text-sm">
+                        Submit Request
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-500 py-12 text-sm text-center">
+        <p>&copy; 2026 Falcon Services. All Rights Reserved.</p>
+        <p class="mt-4 text-xs text-slate-600 max-w-3xl mx-auto px-4 leading-relaxed">
+            Falcon Services operates as an independent medical equipment sales and technical service enterprise working alongside IDE and supported by major global equipment manufacturers.
+        </p>
+    </footer>
+
+</body>
+</html>
